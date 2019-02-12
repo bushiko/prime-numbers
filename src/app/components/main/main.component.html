@@ -2,7 +2,7 @@
     <div class="spinner"></div>
     <h1 class="title">Prime numbers</h1>
     <section class="section">
-        <div class="column is-offset-one-quarter">
+        <div class="column is-offset-one-fifth">
             <p class="mb30"> The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17. </p>
             <form class="mb15" [formGroup]="primeNumbersForm" (ngSubmit)="onSubmit()">
                 <div class="field has-addons">
@@ -32,8 +32,8 @@
             <div [class.pn-invisible]="!showResults">
                 <p class="mb30"> The sum of the primes below {{ limitControl.value }} is: {{ sum }} </p>
                 
-                <a *ngIf="!showDetails" href="#" (click)="showDetails = true" >Show detailed sum</a>
-                <a *ngIf="showDetails" href="#" (click)="showDetails = false" >Hide detailed sum</a>
+                <a *ngIf="!showDetails" (click)="showDetails = true" >Show detailed sum</a>
+                <a *ngIf="showDetails" (click)="showDetails = false" >Hide detailed sum</a>
                 <article *ngIf="showDetails" class="message is-small is-info">
                     <div class="message-body" [innerHTML]="detailedSum" >
                     </div>
