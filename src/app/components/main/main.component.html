@@ -1,0 +1,51 @@
+<div class="pn-main__container container">
+    <div class="spinner"></div>
+    <h1 class="title">Prime numbers</h1>
+    <section class="section">
+        <div class="column is-offset-one-quarter">
+            <p class="mb30"> The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17. </p>
+            <form class="mb15" [formGroup]="primeNumbersForm" (ngSubmit)="onSubmit()">
+                <div class="field has-addons">
+                    <span class="mr15"> Find the sum of all the primes below:</span>
+                    <div class="control">
+                        <input 
+                            class="input"
+                            [class.is-danger]="limitControl.hasError('pattern')"
+                            [formControl]="limitControl"
+                            (keyup)="showResults = false"
+                            type="text" 
+                            placeholder="limit" >
+                            <p [class.pn-invisible]="!limitControl.hasError('pattern')" 
+                                class="help is-danger">Please enter a valid positive integer </p>
+                    </div>
+                    <div class="control">
+                        <button 
+                            class="button is-primary"
+                            [class.is-loading]="loading"
+                            type="submit" 
+                            [disabled]="loading || primeNumbersForm.invalid"
+                            [innerHTML]="'find'"></button>
+                    </div>
+                </div>
+            </form>
+
+            <div [class.pn-invisible]="!showResults">
+                <p class="mb30"> The sum of the primes below {{ limitControl.value }} is: {{ sum }} </p>
+                
+                <a *ngIf="!showDetails" href="#" (click)="showDetails = true" >Show detailed sum</a>
+                <a *ngIf="showDetails" href="#" (click)="showDetails = false" >Hide detailed sum</a>
+                <article *ngIf="showDetails" class="message is-small is-info">
+                    <div class="message-body" [innerHTML]="detailedSum" >
+                    </div>
+                </article>
+            </div>
+            
+            <pn-notification *ngIf="showError" 
+                (close)="showError = false"
+                message="Something went wrong, please try again" >
+            </pn-notification>
+        </div>
+    </section>
+  </div>
+  
+  

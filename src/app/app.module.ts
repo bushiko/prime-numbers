@@ -1,16 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { 
+  FormsModule, 
+  ReactiveFormsModule 
+}   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+// components
+import { NotificationComponent } from './components/notification/notification.component';
+import { MainComponent } from './components/main/main.component';
+
+// services
+import { PrimeNumbersService } from './services/PrimeNumbersService';
 
 @NgModule({
   declarations: [
-    AppComponent
+    NotificationComponent,
+    MainComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [PrimeNumbersService],
+  bootstrap: [MainComponent],
 })
 export class AppModule { }

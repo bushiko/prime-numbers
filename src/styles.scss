@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    min-height: 100%;
+}
+
+$pixels: 0 5 10 15 20 25 30 35 40 45;
+
+@each $i in $pixels {
+    .mt#{$i} { margin-top: #{$i}px !important; }
+    .mr#{$i} { margin-right: #{$i}px !important; }
+    .mb#{$i} { margin-bottom: #{$i}px !important; }
+    .ml#{$i} { margin-left: #{$i}px !important; }
+}
+
+.pn-hidden {
+    display: none !important;
+}
+
+.pn-invisible {
+    visibility: hidden !important;
+}
